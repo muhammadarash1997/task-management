@@ -19,7 +19,7 @@ func NewController(service service.Service) *controller {
 	}
 }
 
-func (c *controller) CreateUser(ctx *gin.Context) {
+func (c *controller) CreateUserHandler(ctx *gin.Context) {
 	var user model.User
 	err := ctx.ShouldBindJSON(&user)
 	if err != nil {
@@ -34,7 +34,7 @@ func (c *controller) CreateUser(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, user)
 }
 
-func (c *controller) GetAllUsers(ctx *gin.Context) {
+func (c *controller) GetAllUsersHandler(ctx *gin.Context) {
 	users, err := c.service.FindUsers()
 	if err != nil {
 		ctx.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
@@ -43,7 +43,7 @@ func (c *controller) GetAllUsers(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, users)
 }
 
-func (c *controller) GetUser(ctx *gin.Context) {
+func (c *controller) GetUserHandler(ctx *gin.Context) {
 	userIDString := ctx.Param("id")
 	userID, _ := strconv.ParseUint(userIDString, 10, 64)
 	user, err := c.service.FindUser(uint(userID))
@@ -54,7 +54,7 @@ func (c *controller) GetUser(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, user)
 }
 
-func (c *controller) UpdateUser(ctx *gin.Context) {
+func (c *controller) UpdateUserHandler(ctx *gin.Context) {
 	userIDString := ctx.Param("id")
 	userID, _ := strconv.ParseUint(userIDString, 10, 64)
 	user, err := c.service.FindUser(uint(userID))
@@ -83,7 +83,7 @@ func (c *controller) UpdateUser(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, user)
 }
 
-func (c *controller) DeleteUser(ctx *gin.Context) {
+func (c *controller) DeleteUserHandler(ctx *gin.Context) {
 	userIDString := ctx.Param("id")
 	userID, _ := strconv.ParseUint(userIDString, 10, 64)
 	user, err := c.service.FindUser(uint(userID))

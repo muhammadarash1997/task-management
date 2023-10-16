@@ -35,7 +35,7 @@ func (c *controller) LoginHandler(ctx *gin.Context) {
 		return
 	}
 
-	tokenGenerated, err := c.service.GenerateToken(userLogged.ID, map[string]bool{})
+	tokenGenerated, err := c.service.GenerateToken(userLogged.ID)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Login failed"})
 		return
@@ -74,11 +74,9 @@ func (c *controller) AuthenticateHandler(ctx *gin.Context) {
 	}
 
 	id := claim["user_id"].(uint)
-	user, err := c.userService.FindUser(id)
+	_, err = c.userService.FindUser(id)
 	if err != nil {
 		ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
 		return
 	}
-
-	ctx.Set("currentUser", user)
 }

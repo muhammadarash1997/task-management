@@ -19,7 +19,7 @@ func NewController(service service.Service) *controller {
 	}
 }
 
-func (c *controller) CreateTask(ctx *gin.Context) {
+func (c *controller) CreateTaskHandler(ctx *gin.Context) {
 	var task model.Task
 	err := ctx.ShouldBindJSON(&task)
 	if err != nil {
@@ -34,7 +34,7 @@ func (c *controller) CreateTask(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, task)
 }
 
-func (c *controller) GetAllTasks(ctx *gin.Context) {
+func (c *controller) GetAllTasksHandler(ctx *gin.Context) {
 	tasks, err := c.service.FindTasks()
 	if err != nil {
 		ctx.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
@@ -43,7 +43,7 @@ func (c *controller) GetAllTasks(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, tasks)
 }
 
-func (c *controller) GetTask(ctx *gin.Context) {
+func (c *controller) GetTaskHandler(ctx *gin.Context) {
 	taskIDString := ctx.Param("id")
 	taskID, _ := strconv.ParseUint(taskIDString, 10, 64)
 	task, err := c.service.FindTask(uint(taskID))
@@ -54,7 +54,7 @@ func (c *controller) GetTask(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, task)
 }
 
-func (c *controller) UpdateTask(ctx *gin.Context) {
+func (c *controller) UpdateTaskHandler(ctx *gin.Context) {
 	taskIDString := ctx.Param("id")
 	taskID, _ := strconv.ParseUint(taskIDString, 10, 64)
 	task, err := c.service.FindTask(uint(taskID))
@@ -84,7 +84,7 @@ func (c *controller) UpdateTask(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, task)
 }
 
-func (c *controller) DeleteTask(ctx *gin.Context) {
+func (c *controller) DeleteTaskHandler(ctx *gin.Context) {
 	taskIDString := ctx.Param("id")
 	taskID, _ := strconv.ParseUint(taskIDString, 10, 64)
 	task, err := c.service.FindTask(uint(taskID))

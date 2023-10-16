@@ -1,10 +1,10 @@
 package service
 
 import (
-	"github.com/muhammadarash1997/task-management/user/repository"
+	"github.com/muhammadarash1997/task-management/sharevar"
 	"github.com/muhammadarash1997/task-management/user/model"
-	"log"
-	"runtime"
+	"github.com/muhammadarash1997/task-management/user/repository"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type Service interface {
@@ -26,71 +26,74 @@ func NewService(repository repository.Repository) Service {
 }
 
 func (s *service) CreateUser(user model.User) error {
-	_, file, line, _ := runtime.Caller(0)
-	log.Printf("[%v] [%v] Request :%v", file, line, user)
+	sharevar.InfoLogger.Println("Request", user)
 
-	err := s.repository.CreateUser(user)
+	//Hashing password
+	passwordHash, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.MinCost)
 	if err != nil {
-		log.Printf("Error :%v", err)
+		sharevar.ErrorLogger.Println(err)
+		return err
+	}
+	user.Password = string(passwordHash)
+
+	err = s.repository.CreateUser(user)
+	if err != nil {
+		sharevar.ErrorLogger.Println(err)
 		return err
 	}
 
-	log.Printf("[%v] [%v] Response :%v", file, line, user)
+	sharevar.InfoLogger.Println("Response")
 	return nil
 }
 
 func (s *service) FindUsers() ([]model.User, error) {
-	_, file, line, _ := runtime.Caller(0)
-	log.Printf("[%v] [%v] Request", file, line)
+	sharevar.InfoLogger.Println("Request")
 
 	users, err := s.repository.GetAllUser()
 	if err != nil {
-		log.Printf("Error :%v", err)
+		sharevar.ErrorLogger.Println(err)
 		return []model.User{}, err
 	}
 
-	log.Printf("[%v] [%v] Response :%v", file, line, users)
+	sharevar.InfoLogger.Println("Response", users)
 	return users, nil
 }
 
 func (s *service) FindUser(userId uint) (model.User, error) {
-	_, file, line, _ := runtime.Caller(0)
-	log.Printf("[%v] [%v] Request :%v", file, line, userId)
-	
+	sharevar.InfoLogger.Println("Request", userId)
+
 	user, err := s.repository.GetUserById(userId)
 	if err != nil {
-		log.Printf("Error :%v", err)
+		sharevar.ErrorLogger.Println(err)
 		return model.User{}, err
 	}
 
-	log.Printf("[%v] [%v] Response :%v", file, line, user)
+	sharevar.InfoLogger.Println("Response", user)
 	return user, nil
 }
 
 func (s *service) UpdateUser(user model.User) error {
-	_, file, line, _ := runtime.Caller(0)
-	log.Printf("[%v] [%v] Request :%v", file, line, user)
+	sharevar.InfoLogger.Println("Request", user)
 
 	err := s.repository.UpdateUser(user)
 	if err != nil {
-		log.Printf("Error :%v", err)
+		sharevar.ErrorLogger.Println(err)
 		return err
 	}
 
-	log.Printf("[%v] [%v] Response", file, line)
+	sharevar.InfoLogger.Println("Response")
 	return nil
 }
 
 func (s *service) DeleteUser(user model.User) error {
-	_, file, line, _ := runtime.Caller(0)
-	log.Printf("[%v] [%v] Request :%v", file, line, user)
+	sharevar.InfoLogger.Println("Request", user)
 
 	err := s.repository.DeleteById(user.ID)
 	if err != nil {
-		log.Printf("Error :%v", err)
+		sharevar.ErrorLogger.Println(err)
 		return err
 	}
 
-	log.Printf("[%v] [%v] Response", file, line)
+	sharevar.InfoLogger.Println("Response")
 	return nil
 }

@@ -36,26 +36,31 @@ func main() {
 	taskController := taskcontroller.NewController(taskService)
 	authController := authcontroller.NewController(authService, userService)
 
-	// Routing untuk Tasks yang dilindungi oleh OAuth2
-	userGroup := r.Group("/users")
-	userGroup.Use() // Middleware OAuth2 untuk melindungi rute
+	// Routing untuk Auth
+	authGroup := r.Group("/auth")
 	{
-		userGroup.POST("/", userController.CreateUser)
-		userGroup.GET("/", userController.GetAllUsers)
-		userGroup.GET("/:id", userController.GetUser)
-		userGroup.PUT("/:id", userController.UpdateUser)
-		userGroup.DELETE("/:id", userController.DeleteUser)
+		authGroup.POST("/login", authController.LoginHandler)
+	}
+
+	// Routing untuk Users
+	userGroup := r.Group("/users")
+	{
+		userGroup.POST("/", userController.CreateUserHandler)
+		userGroup.GET("/", userController.GetAllUsersHandler)
+		userGroup.GET("/:id", userController.GetUserHandler)
+		userGroup.PUT("/:id", userController.UpdateUserHandler)
+		userGroup.DELETE("/:id", userController.DeleteUserHandler)
 	}
 
 	// Routing untuk Tasks yang dilindungi oleh OAuth2
 	taskGroup := r.Group("/tasks")
 	taskGroup.Use() // Middleware OAuth2 untuk melindungi rute
 	{
-		taskGroup.POST("/", authController.AuthenticateHandler, taskController.CreateTask)
-		taskGroup.GET("/", authController.AuthenticateHandler, taskController.GetAllTasks)
-		taskGroup.GET("/:id", authController.AuthenticateHandler, taskController.GetTask)
-		taskGroup.PUT("/:id", authController.AuthenticateHandler, taskController.UpdateTask)
-		taskGroup.DELETE("/:id", authController.AuthenticateHandler, taskController.DeleteTask)
+		taskGroup.POST("/", authController.AuthenticateHandler, taskController.CreateTaskHandler)
+		taskGroup.GET("/", authController.AuthenticateHandler, taskController.GetAllTasksHandler)
+		taskGroup.GET("/:id", authController.AuthenticateHandler, taskController.GetTaskHandler)
+		taskGroup.PUT("/:id", authController.AuthenticateHandler, taskController.UpdateTaskHandler)
+		taskGroup.DELETE("/:id", authController.AuthenticateHandler, taskController.DeleteTaskHandler)
 	}
 
 	r.Run(":8080")
