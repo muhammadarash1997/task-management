@@ -12,7 +12,7 @@ import (
 
 var (
 	insertTask = `
-		INSERT INTO tasks(user_id, title, description, status) VALUES (?,?,?,?)
+		INSERT INTO tasks(user_id, title, description) VALUES (?,?,?)
 	`
 	selectTasks = `
 		SELECT * FROM tasks
@@ -54,7 +54,6 @@ func (r *repository) CreateTask(task model.Task) error {
 	valueArgs = append(valueArgs, task.UserID)
 	valueArgs = append(valueArgs, task.Title)
 	valueArgs = append(valueArgs, task.Description)
-	valueArgs = append(valueArgs, task.Status)
 
 	_, err := r.db.Exec(insertTask, valueArgs...)
 	if err != nil {
