@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "9c77c1a6-0bd3-4016-9508-68d0cfeb586d",
+		"name": "TASK MANAGEMENT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18371428"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"agus\",\r\n    \"email\": \"agus@gmail.com\",\r\n    \"password\": \"agus123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateTask",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTc2MzE2NzYsImlhdCI6MTY5NzQzMTY3NiwiaXNzIjoic2VjdXJpdHkuYmx1ZWJpcmQuaWQiLCJzdWIiOiJteWJiLnN5c3RlbSIsImF1dGhfdGltZSI6MTY5NzQzMTY3NiwiYWRkcmVzcyI6e30sInV1aWQiOiJmNDFiMTg5My1lMWM5LTQ4OGQtYTEzNC1iMDQ2MzkyNTFkNGIiLCJ1aWQiOiJteWJiLnN5c3RlbSIsImRvbWFpbiI6InN5c3RlbS5ibHVlYmlyZC5pZCIsImFjbCI6eyIxMCI6Mjg1ODczMDIzOTEyOTYsIjEwNSI6MzI3NjgsIjExNCI6Mjc4MTIxMTg1MzE2LCIxMjMiOjEyOCwiMTI1NzkiOjMsIjEyNjAyIjo3LCIxODEzOSI6NywiMjI3NDkiOjQwOTUsIjIyNzU4IjozMjc2NywiMjI3NjUiOjcsIjIzNjAiOjc2NywiMjQ2NjQiOjEsIjI1IjoyNjIyMTYsIjMwIjo1MjAsIjM5IjoyNjMyMDAsIjQ2Ijo4LCI1NSI6MTUsIjYxIjo1MjQyODgwLCI2NyI6MTEyMCwiNyI6MTAyNCwiNzYiOjIsIjgzIjo5Mzk3ODY3NTIsIjkzIjozNTE4NjAyNDcxMDIxMH0sImFjbHMiOnsiMTAiOiIyODU4NzMwMjM5MTI5NiIsIjEwNSI6IjMyNzY4IiwiMTE0IjoiMjc4MTIxMTg1MzE2IiwiMTIzIjoiMTI4IiwiMTI1NzkiOiIzIiwiMTI2MDIiOiI3IiwiMTgxMzkiOiI3IiwiMjI3NDkiOiI0MDk1IiwiMjI3NTgiOiIzMjc2NyIsIjIyNzY1IjoiNyIsIjIzNjAiOiI3NjciLCIyNDY2NCI6IjEiLCIyNSI6IjI2MjIxNiIsIjMwIjoiNTIwIiwiMzkiOiIyNjMyMDAiLCI0NiI6IjgiLCI1NSI6IjE1IiwiNjEiOiI1MjQyODgwIiwiNjciOiIxMTIwIiwiNyI6IjEwMjQiLCI3NiI6IjIiLCI4MyI6IjkzOTc4Njc1MiIsIjkzIjoiMzUxODYwMjQ3MTAyMTAifSwiZG9tYWluX2lkIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiZ3JvdXBfbmFtZSI6Ik1ZQkIgU3lzdGVtIiwiYmJnLmJiZC5hY2Nlc3MiOnsiYXJlYXMiOm51bGwsInBvb2xzIjpudWxsfX0.MCEdjsrxywdgnEckmpOOS58Aw-sYSqZs2QT1ZJPjOLf8MQXS6KZYFN0VmOqjjKjmYi8Now4mqIUQ289ioGe3Zg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"title\": \"Journal\",\r\n    \"description\": \"Make journal one page\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllTasks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTc2MzE2NzYsImlhdCI6MTY5NzQzMTY3NiwiaXNzIjoic2VjdXJpdHkuYmx1ZWJpcmQuaWQiLCJzdWIiOiJteWJiLnN5c3RlbSIsImF1dGhfdGltZSI6MTY5NzQzMTY3NiwiYWRkcmVzcyI6e30sInV1aWQiOiJmNDFiMTg5My1lMWM5LTQ4OGQtYTEzNC1iMDQ2MzkyNTFkNGIiLCJ1aWQiOiJteWJiLnN5c3RlbSIsImRvbWFpbiI6InN5c3RlbS5ibHVlYmlyZC5pZCIsImFjbCI6eyIxMCI6Mjg1ODczMDIzOTEyOTYsIjEwNSI6MzI3NjgsIjExNCI6Mjc4MTIxMTg1MzE2LCIxMjMiOjEyOCwiMTI1NzkiOjMsIjEyNjAyIjo3LCIxODEzOSI6NywiMjI3NDkiOjQwOTUsIjIyNzU4IjozMjc2NywiMjI3NjUiOjcsIjIzNjAiOjc2NywiMjQ2NjQiOjEsIjI1IjoyNjIyMTYsIjMwIjo1MjAsIjM5IjoyNjMyMDAsIjQ2Ijo4LCI1NSI6MTUsIjYxIjo1MjQyODgwLCI2NyI6MTEyMCwiNyI6MTAyNCwiNzYiOjIsIjgzIjo5Mzk3ODY3NTIsIjkzIjozNTE4NjAyNDcxMDIxMH0sImFjbHMiOnsiMTAiOiIyODU4NzMwMjM5MTI5NiIsIjEwNSI6IjMyNzY4IiwiMTE0IjoiMjc4MTIxMTg1MzE2IiwiMTIzIjoiMTI4IiwiMTI1NzkiOiIzIiwiMTI2MDIiOiI3IiwiMTgxMzkiOiI3IiwiMjI3NDkiOiI0MDk1IiwiMjI3NTgiOiIzMjc2NyIsIjIyNzY1IjoiNyIsIjIzNjAiOiI3NjciLCIyNDY2NCI6IjEiLCIyNSI6IjI2MjIxNiIsIjMwIjoiNTIwIiwiMzkiOiIyNjMyMDAiLCI0NiI6IjgiLCI1NSI6IjE1IiwiNjEiOiI1MjQyODgwIiwiNjciOiIxMTIwIiwiNyI6IjEwMjQiLCI3NiI6IjIiLCI4MyI6IjkzOTc4Njc1MiIsIjkzIjoiMzUxODYwMjQ3MTAyMTAifSwiZG9tYWluX2lkIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiZ3JvdXBfbmFtZSI6Ik1ZQkIgU3lzdGVtIiwiYmJnLmJiZC5hY2Nlc3MiOnsiYXJlYXMiOm51bGwsInBvb2xzIjpudWxsfX0.MCEdjsrxywdgnEckmpOOS58Aw-sYSqZs2QT1ZJPjOLf8MQXS6KZYFN0VmOqjjKjmYi8Now4mqIUQ289ioGe3Zg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTask",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTc2MzE2NzYsImlhdCI6MTY5NzQzMTY3NiwiaXNzIjoic2VjdXJpdHkuYmx1ZWJpcmQuaWQiLCJzdWIiOiJteWJiLnN5c3RlbSIsImF1dGhfdGltZSI6MTY5NzQzMTY3NiwiYWRkcmVzcyI6e30sInV1aWQiOiJmNDFiMTg5My1lMWM5LTQ4OGQtYTEzNC1iMDQ2MzkyNTFkNGIiLCJ1aWQiOiJteWJiLnN5c3RlbSIsImRvbWFpbiI6InN5c3RlbS5ibHVlYmlyZC5pZCIsImFjbCI6eyIxMCI6Mjg1ODczMDIzOTEyOTYsIjEwNSI6MzI3NjgsIjExNCI6Mjc4MTIxMTg1MzE2LCIxMjMiOjEyOCwiMTI1NzkiOjMsIjEyNjAyIjo3LCIxODEzOSI6NywiMjI3NDkiOjQwOTUsIjIyNzU4IjozMjc2NywiMjI3NjUiOjcsIjIzNjAiOjc2NywiMjQ2NjQiOjEsIjI1IjoyNjIyMTYsIjMwIjo1MjAsIjM5IjoyNjMyMDAsIjQ2Ijo4LCI1NSI6MTUsIjYxIjo1MjQyODgwLCI2NyI6MTEyMCwiNyI6MTAyNCwiNzYiOjIsIjgzIjo5Mzk3ODY3NTIsIjkzIjozNTE4NjAyNDcxMDIxMH0sImFjbHMiOnsiMTAiOiIyODU4NzMwMjM5MTI5NiIsIjEwNSI6IjMyNzY4IiwiMTE0IjoiMjc4MTIxMTg1MzE2IiwiMTIzIjoiMTI4IiwiMTI1NzkiOiIzIiwiMTI2MDIiOiI3IiwiMTgxMzkiOiI3IiwiMjI3NDkiOiI0MDk1IiwiMjI3NTgiOiIzMjc2NyIsIjIyNzY1IjoiNyIsIjIzNjAiOiI3NjciLCIyNDY2NCI6IjEiLCIyNSI6IjI2MjIxNiIsIjMwIjoiNTIwIiwiMzkiOiIyNjMyMDAiLCI0NiI6IjgiLCI1NSI6IjE1IiwiNjEiOiI1MjQyODgwIiwiNjciOiIxMTIwIiwiNyI6IjEwMjQiLCI3NiI6IjIiLCI4MyI6IjkzOTc4Njc1MiIsIjkzIjoiMzUxODYwMjQ3MTAyMTAifSwiZG9tYWluX2lkIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiZ3JvdXBfbmFtZSI6Ik1ZQkIgU3lzdGVtIiwiYmJnLmJiZC5hY2Nlc3MiOnsiYXJlYXMiOm51bGwsInBvb2xzIjpudWxsfX0.MCEdjsrxywdgnEckmpOOS58Aw-sYSqZs2QT1ZJPjOLf8MQXS6KZYFN0VmOqjjKjmYi8Now4mqIUQ289ioGe3Zg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/tasks/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"agus\",\r\n    \"email\": \"agus@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateTask",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTc2MzE2NzYsImlhdCI6MTY5NzQzMTY3NiwiaXNzIjoic2VjdXJpdHkuYmx1ZWJpcmQuaWQiLCJzdWIiOiJteWJiLnN5c3RlbSIsImF1dGhfdGltZSI6MTY5NzQzMTY3NiwiYWRkcmVzcyI6e30sInV1aWQiOiJmNDFiMTg5My1lMWM5LTQ4OGQtYTEzNC1iMDQ2MzkyNTFkNGIiLCJ1aWQiOiJteWJiLnN5c3RlbSIsImRvbWFpbiI6InN5c3RlbS5ibHVlYmlyZC5pZCIsImFjbCI6eyIxMCI6Mjg1ODczMDIzOTEyOTYsIjEwNSI6MzI3NjgsIjExNCI6Mjc4MTIxMTg1MzE2LCIxMjMiOjEyOCwiMTI1NzkiOjMsIjEyNjAyIjo3LCIxODEzOSI6NywiMjI3NDkiOjQwOTUsIjIyNzU4IjozMjc2NywiMjI3NjUiOjcsIjIzNjAiOjc2NywiMjQ2NjQiOjEsIjI1IjoyNjIyMTYsIjMwIjo1MjAsIjM5IjoyNjMyMDAsIjQ2Ijo4LCI1NSI6MTUsIjYxIjo1MjQyODgwLCI2NyI6MTEyMCwiNyI6MTAyNCwiNzYiOjIsIjgzIjo5Mzk3ODY3NTIsIjkzIjozNTE4NjAyNDcxMDIxMH0sImFjbHMiOnsiMTAiOiIyODU4NzMwMjM5MTI5NiIsIjEwNSI6IjMyNzY4IiwiMTE0IjoiMjc4MTIxMTg1MzE2IiwiMTIzIjoiMTI4IiwiMTI1NzkiOiIzIiwiMTI2MDIiOiI3IiwiMTgxMzkiOiI3IiwiMjI3NDkiOiI0MDk1IiwiMjI3NTgiOiIzMjc2NyIsIjIyNzY1IjoiNyIsIjIzNjAiOiI3NjciLCIyNDY2NCI6IjEiLCIyNSI6IjI2MjIxNiIsIjMwIjoiNTIwIiwiMzkiOiIyNjMyMDAiLCI0NiI6IjgiLCI1NSI6IjE1IiwiNjEiOiI1MjQyODgwIiwiNjciOiIxMTIwIiwiNyI6IjEwMjQiLCI3NiI6IjIiLCI4MyI6IjkzOTc4Njc1MiIsIjkzIjoiMzUxODYwMjQ3MTAyMTAifSwiZG9tYWluX2lkIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiZ3JvdXBfbmFtZSI6Ik1ZQkIgU3lzdGVtIiwiYmJnLmJiZC5hY2Nlc3MiOnsiYXJlYXMiOm51bGwsInBvb2xzIjpudWxsfX0.MCEdjsrxywdgnEckmpOOS58Aw-sYSqZs2QT1ZJPjOLf8MQXS6KZYFN0VmOqjjKjmYi8Now4mqIUQ289ioGe3Zg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Journal\",\r\n    \"description\": \"Make journal two pages\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/tasks/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTask",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTc2MzE2NzYsImlhdCI6MTY5NzQzMTY3NiwiaXNzIjoic2VjdXJpdHkuYmx1ZWJpcmQuaWQiLCJzdWIiOiJteWJiLnN5c3RlbSIsImF1dGhfdGltZSI6MTY5NzQzMTY3NiwiYWRkcmVzcyI6e30sInV1aWQiOiJmNDFiMTg5My1lMWM5LTQ4OGQtYTEzNC1iMDQ2MzkyNTFkNGIiLCJ1aWQiOiJteWJiLnN5c3RlbSIsImRvbWFpbiI6InN5c3RlbS5ibHVlYmlyZC5pZCIsImFjbCI6eyIxMCI6Mjg1ODczMDIzOTEyOTYsIjEwNSI6MzI3NjgsIjExNCI6Mjc4MTIxMTg1MzE2LCIxMjMiOjEyOCwiMTI1NzkiOjMsIjEyNjAyIjo3LCIxODEzOSI6NywiMjI3NDkiOjQwOTUsIjIyNzU4IjozMjc2NywiMjI3NjUiOjcsIjIzNjAiOjc2NywiMjQ2NjQiOjEsIjI1IjoyNjIyMTYsIjMwIjo1MjAsIjM5IjoyNjMyMDAsIjQ2Ijo4LCI1NSI6MTUsIjYxIjo1MjQyODgwLCI2NyI6MTEyMCwiNyI6MTAyNCwiNzYiOjIsIjgzIjo5Mzk3ODY3NTIsIjkzIjozNTE4NjAyNDcxMDIxMH0sImFjbHMiOnsiMTAiOiIyODU4NzMwMjM5MTI5NiIsIjEwNSI6IjMyNzY4IiwiMTE0IjoiMjc4MTIxMTg1MzE2IiwiMTIzIjoiMTI4IiwiMTI1NzkiOiIzIiwiMTI2MDIiOiI3IiwiMTgxMzkiOiI3IiwiMjI3NDkiOiI0MDk1IiwiMjI3NTgiOiIzMjc2NyIsIjIyNzY1IjoiNyIsIjIzNjAiOiI3NjciLCIyNDY2NCI6IjEiLCIyNSI6IjI2MjIxNiIsIjMwIjoiNTIwIiwiMzkiOiIyNjMyMDAiLCI0NiI6IjgiLCI1NSI6IjE1IiwiNjEiOiI1MjQyODgwIiwiNjciOiIxMTIwIiwiNyI6IjEwMjQiLCI3NiI6IjIiLCI4MyI6IjkzOTc4Njc1MiIsIjkzIjoiMzUxODYwMjQ3MTAyMTAifSwiZG9tYWluX2lkIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiZ3JvdXBfbmFtZSI6Ik1ZQkIgU3lzdGVtIiwiYmJnLmJiZC5hY2Nlc3MiOnsiYXJlYXMiOm51bGwsInBvb2xzIjpudWxsfX0.MCEdjsrxywdgnEckmpOOS58Aw-sYSqZs2QT1ZJPjOLf8MQXS6KZYFN0VmOqjjKjmYi8Now4mqIUQ289ioGe3Zg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/tasks/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
